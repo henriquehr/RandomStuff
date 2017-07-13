@@ -1,10 +1,28 @@
-0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`¿Ä0`‡^,‘
-endstream
-endobj
-1090 0 obj
-881
-endobj
-1091 0 obj
-<< /Length 1092 0 R /N 3 /Alternate /DeviceRGB /Filter /FlateDecode >>
-stream
-xÖUﬂo€T>âoR§? XGáä≈ØUS[π≠∆Iì•ÌJ•Èÿ*$‰:7â©€È∂™O{Å7¸@ŸH<!b{Ÿˆ¿¥ISá*™IH{Ëƒ!&ÌU·ªvb'Sƒ\ı˙À9ﬂ9Á;Á^€D=_iµöUàñ´Æùœ$ïìßîûMä“≥‘K‘´ÈN-ëÀÕ.¡˜ŒÎ·äÀÌëÓ˛Nˆ#øzã‹—â"O¿n}¯Q
+#pragma once
+#include <vector>
+#include "Activation.h"
+
+class NeuronBase
+{
+public:
+	NeuronBase(const std::string &activation_name, int inputs_amount);
+	NeuronBase(NeuronBase &n);
+	virtual ~NeuronBase();
+	virtual double getBiasInputWeight();
+	virtual double getLastActivationValue();
+	virtual double getLastActivationDerivative();
+	virtual std::string getActivationName();
+	virtual std::vector<double> getVecInputWeights();
+	virtual double step(const std::vector<double> &inputs) = 0;
+	virtual void generateWeights(double from, double to) = 0;
+	virtual void updateBiasInputWeight(double weight);
+	virtual void updateWeightInputIndex(double value, int index);
+	void setActivationInput(std::string activation_name);
+	void addWeightInput(double value);
+protected:
+	double bias_input_weight;
+	double last_activation_value;
+	double last_derivative_value;
+	std::vector<double> vec_weights_input;
+	Activation *activation = nullptr;
+};

@@ -1,3 +1,32 @@
-W’úû—ÇåP2T„]{ºté0@äó?ş`ÏÇ½¤À‰'PL0GÌ‡ƒ8æÖ¡C‡½{÷>}š#åÊ•c/¾xñbÌŠí;ÒÛ²eKœC‹şwÑ¢ïŞ½‡ºÄ~ß«—±·oßşöíÛ@uhgÏ…Rš4µk×­Zµò®]»ÃÂøøä¬rüøq#-6"jc¡ôèéé‰- Ì˜í£ß@QòÉY>£:¹rå"Õœ½yó&ÒøèQt­ZujÕªNGááácÈ$Ù²e8<yC~ĞìJ•*‘>3ÄŒ¶¡[­[·fì("GN:Er(&‘F¦Øa\³fÍbÈ–fñ®fÍšmİº• é«råÊdÔ¨QL
-¤Yb£¢¢À´iÓ–/_À~şùg<êƒ>À9™¦Jœ8êÈ‘#¬yT˜¹@–X"4}QàÁƒ‡S¦L?v,Ìb¹ìY¨åAPúêÑ£‡¹Sscı|şùçÃú>úè#Î®Zµú•W’)Rœ¬ZµÊß¿r‰E0º«W¯2v
-°Š˜&šibu¡y¿ÿş;¾Š%²´0mó:"¢eújÔ¨AÉYÂóI5cg…c)d˜À _¿~üøñ”aI¤I“æı÷ß§$Ñ™ßêÕ«›6É<ë“S$–Zh9	q‹y1KÎX(Ÿ	»Y³FL.y£Ê0ÀÕ«W/]º”4Û¼yóÒ¥K/[zãÆí|ù¼³eË>dÈ¿÷ËÃ†,T!„p~d¡®Gì·±ëhÚ´)Ñ¿åË—;vÌ\9´±PvØUc˜:u*e¬w½–çBQY<Š2¸,Y²¼şúëÔb°ZØôÓÀ>/æ¼é±P¼œ7o/_>„ÕASçÎËÜæİwßEkGŒaúb‹OöèìÈ)À@:vìˆ4=špuãÆóçÏ·¹´kF=ûk“'O‰Œüı?rBï†±P“%teóæÍc®¹m«V­æúõëm3ŒÓBƒ‚‚ĞÅß~ûmÆŒäoiÚ´‰OŞI“¦œ8qŒ³gÏŞ©S',®ÿş©S§69ïŞ½»q¡YÜŒ2™¡$ÍbGØ eîß¿o^hl^”#GŒ-'<,)bvˆùgZ1Õ?ş½3fù‰1í4oŞŠÌ1ä.]º p.$ŸXS·n
+#include "LSTMNet.h"
+#include <iostream>
+#include "LSTMCell.h"
+
+LSTMNet::LSTMNet() :NeuralNetBase()
+{}
+
+LSTMNet::~LSTMNet()
+{}
+
+void LSTMNet::createNeuronsLayer(int amount, int layer, std::string activation_name, int inputs_amount)
+{
+	vec_layers.at(layer).resize(amount);
+	for(int i = 0; i < amount; i++)
+	{
+		this->vec_layers.at(layer).at(i) = new LSTMCell(activation_name, inputs_amount);
+	}
+}
+
+void LSTMNet::appendNeuronLayer(int layer, std::string activation_name, int inputs_amount)
+{
+	this->vec_layers.at(layer).push_back(new LSTMCell(activation_name, inputs_amount));
+}
+
+void LSTMNet::appendLayer(int neurons_amount, std::string activation_name, int inputs_amount)
+{
+	this->vec_layers.push_back(std::vector<NeuronBase*>());
+	for(int i = 0; i < neurons_amount; i++)
+	{
+		this->vec_layers.at(this->vec_layers.size() - 1).push_back(new LSTMCell(activation_name, inputs_amount));
+	}
+}

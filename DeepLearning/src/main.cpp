@@ -1,135 +1,87 @@
- n
-0000255569 00000 n
-0000255711 00000 n
-0000257196 00000 n
-0000257343 00000 n
-0000257377 00000 n
-0000257484 00000 n
-0000257631 00000 n
-0000257780 00000 n
-0000261747 00000 n
-0000261894 00000 n
-0000262051 00000 n
-0000266153 00000 n
-0000266300 00000 n
-0000266444 00000 n
-0000268875 00000 n
-0000269023 00000 n
-0000269057 00000 n
-0000269164 00000 n
-0000269312 00000 n
-0000269437 00000 n
-0000270342 00000 n
-0000270490 00000 n
-0000270753 00000 n
-0000274943 00000 n
-0000274984 00000 n
-0000275172 00000 n
-0000275404 00000 n
-0000275643 00000 n
-0000275816 00000 n
-0000275982 00000 n
-0000276171 00000 n
-0000276347 00000 n
-0000276604 00000 n
-0000276758 00000 n
-0000276904 00000 n
-0000277134 00000 n
-0000277369 00000 n
-0000277526 00000 n
-0000277680 00000 n
-0000277844 00000 n
-0000278094 00000 n
-0000278342 00000 n
-0000278551 00000 n
-0000278592 00000 n
-0000278660 00000 n
-0000278888 00000 n
-0000279050 00000 n
-0000279225 00000 n
-0000279278 00000 n
-0000279319 00000 n
-0000279411 00000 n
-0000279642 00000 n
-0000279886 00000 n
-0000280111 00000 n
-0000280280 00000 n
-0000280426 00000 n
-0000280647 00000 n
-0000280897 00000 n
-0000281142 00000 n
-0000281249 00000 n
-0000281290 00000 n
-0000281434 00000 n
-0000281632 00000 n
-0000281868 00000 n
-0000282100 00000 n
-0000282282 00000 n
-0000282523 00000 n
-0000282689 00000 n
-0000282964 00000 n
-0000283202 00000 n
-0000283348 00000 n
-0000283575 00000 n
-0000283811 00000 n
-0000284054 00000 n
-0000284255 00000 n
-0000284428 00000 n
-0000284590 00000 n
-0000284745 00000 n
-0000284963 00000 n
-0000285138 00000 n
-0000285355 00000 n
-0000285396 00000 n
-0000285565 00000 n
-0000285770 00000 n
-0000285958 00000 n
-0000286174 00000 n
-0000286400 00000 n
-0000286654 00000 n
-0000286831 00000 n
-0000287053 00000 n
-0000287232 00000 n
-0000287452 00000 n
-0000287696 00000 n
-0000287918 00000 n
-0000288065 00000 n
-0000288276 00000 n
-0000288505 00000 n
-0000288751 00000 n
-0000288976 00000 n
-0000289214 00000 n
-0000289434 00000 n
-0000289661 00000 n
-0000289879 00000 n
-0000290046 00000 n
-0000290317 00000 n
-0000290359 00000 n
-0000290447 00000 n
-0000290654 00000 n
-0000290828 00000 n
-0000291045 00000 n
-0000291238 00000 n
-0000291408 00000 n
-0000291615 00000 n
-0000291833 00000 n
-0000291938 00000 n
-0000291980 00000 n
-0000292137 00000 n
-0000292361 00000 n
-0000292533 00000 n
-0000292741 00000 n
-0000292907 00000 n
-0000293095 00000 n
-0000293257 00000 n
-0000293427 00000 n
-0000293574 00000 n
-0000293815 00000 n
-0000294041 00000 n
-0000294276 00000 n
-0000294508 00000 n
-0000294754 00000 n
-0000294916 00000 n
-0000295070 00000 n
-0000295223 00000 n
-0000295427 
+//#include "PerceptronNet.h"
+//#include "Benchmark.h"
+//#include "Backpropagation.h"
+//#include "RecurrentNet.h"
+//
+//void setup(const std::vector<double> &input, NeuralNetBase *nn)
+//{
+//	Benchmark bench;
+//
+//	int hidden1 = 20;
+//	int hidden2 = 20;
+//	int hidden3 = 20;
+//	int out = 9;
+//
+//	bench.start();
+//	nn->setLayersAmount(4);
+//	nn->createNeuronsLayer(hidden1, 0, "Tanh", input.size());
+//	nn->createNeuronsLayer(hidden2, 1, "Tanh", hidden1);
+//	nn->createNeuronsLayer(hidden3, 2, "Tanh", hidden2);
+//	nn->createNeuronsLayer(out, 3, "Tanh", hidden3);
+//	nn->generateWeights(-1, 1);
+//	bench.stop();
+//	bench.show("Setup");
+//}
+//
+//int main(int argc, char *argv[])
+//{
+//	Benchmark bench1, bench2;
+//	TrainBase *backprop = new Backpropagation();
+//	NeuralNetBase *perc = new RecurrentNet(0);
+//	//LSTMNet *lstm = new LSTMNet(0);
+//	//NeuronBase * l =  new LSTMCell(" ", 0);
+//	//std::cout << l->getBiasWeightInput() << std::endl;
+//	//delete l;
+//	//system("pause");
+//	//return 0;
+//
+//	std::vector<double> out;
+//	std::vector<double> input = {0.4, 0.5, 0.3, 0.1, 0.3, 0.7, 0.9, -1 ,0,0,0,0,0};
+//	std::vector<double> desired = {0.17, 0.9, 0.6, 0.1, 1, 0.1, 1, 0.4,-0.7};
+//	double learning_rate = 0.1;
+//	//setup(input, lstm);
+//	//out = lstm->step(input);
+//	//std::cout << "Out1: " << out.at(0) << " | " << "Out2: " << out.at(1) << " | " << "Out3: " << out.at(2) << std::endl;
+//	//system("pause");
+//	//return EXIT_SUCCESS;
+//
+//	setup(input, perc);
+//	bench1.start();
+//	for(int i = 0; i < 2000; i++)
+//	{
+//		//msg.Message("Propagating...");
+//		out = perc->step(input);
+//		//msg.Message("Backpropagating...");
+//		//bench2.start();
+//		backprop->start(perc, learning_rate, desired);
+//		//bench2.stop();
+//		//bench2.show("Backpropagation");
+//		//std::cout << "Error1: " << (desired.at(0) - out.at(0)) << " | " << "Error2: " << (desired.at(1) - out.at(1)) << " | " << "Error3: " << (desired.at(2) - out.at(2)) << std::endl;
+//	}
+//	for(int i = 0; i < out.size(); ++i)
+//	{
+//		std::cout << "O" << i << ": " << out.at(i) << " | ";
+//	}
+//	std::cout << std::endl;
+//	for(int i = 0; i < out.size(); ++i)
+//	{
+//		std::cout << "D" << i << ": " << desired.at(i) << " | ";
+//	}
+//	std::cout << std::endl;
+//	bench1.stop();
+//	bench1.show("LOOP");
+//
+//	//perc->showNetWeights();
+//
+//	//msg.Message(perc->getLayersAmount());
+//	//msg.Message(out[0]);
+//
+//	std::cout << "Cleaning memory..." << std::endl;
+//	system("pause");
+//	//delete lstm;
+//	delete perc;
+//	delete backprop;
+//	std::cout << "Memory cleaned" << std::endl;
+//	//system("pause");
+//	return EXIT_SUCCESS;
+//}
