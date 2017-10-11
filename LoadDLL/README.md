@@ -1,0 +1,1 @@
+Simple project showing how to load a class from a DLL on Windows.
