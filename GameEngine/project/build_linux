@@ -1,0 +1,16 @@
+#!/bin/bash
+if [ "$1" == "DEBUG" ] || [ "$1" == "RELEASE" ]; then
+    if [ "$2" == "CLEAN" ]; then
+        echo "Deleting old binaries...";
+        rm -R ../binaries/Linux/"$1"
+        echo "Deleting old build files...";
+        rm -R build
+        echo "Deleted."
+    fi
+    echo "Creating CMAKE files...";
+    cmake . -G Ninja -Bbuild -DCMAKE_BUILD_TYPE=$1;
+    echo "Building...";
+    ninja -C build/
+else
+    echo "Use parameters: DEBUG or RELEASE";
+fi
